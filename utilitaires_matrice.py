@@ -47,3 +47,14 @@ def get_colonne(matrice, colonne):
             col.append(matrice_util.get_val(matrice, colonne, i))
         return col
     return None
+
+
+def sous_matrice(matrice, nb_lignes, nb_colonnes, position_haut, position_gauche):
+    nb_l_m = matrice_util.get_nb_lignes(matrice)
+    nb_c_m = matrice_util.get_nb_colonnes(matrice)
+    if nb_lignes <= nb_l_m and nb_colonnes <= nb_c_m and position_haut < nb_lignes and position_gauche < nb_colonnes:
+        nouvelle_matrice = matrice_util.matrice(nb_lignes, nb_colonnes)
+        for i in range(position_haut, nb_lignes+position_haut):
+            for j in range(position_gauche, nb_colonnes+position_gauche):
+                matrice_util.set_val(nouvelle_matrice, i, j, matrice_util.get_val(matrice, i, j))
+    return nouvelle_matrice
